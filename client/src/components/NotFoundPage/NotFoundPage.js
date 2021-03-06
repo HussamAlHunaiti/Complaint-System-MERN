@@ -6,9 +6,11 @@ import {
   Container,
   Grow,
 } from "@material-ui/core";
+import { useState } from 'react';
 
 const NotFoundPage = () => {
     const classes = useStyles();
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
 
     return (
         <Grow in>
@@ -18,7 +20,8 @@ const NotFoundPage = () => {
         <Container className={classes.notFound}>
           <Typography variant="h2">Sorry</Typography>
           <Typography variant="h5">This page cannot be found <br/> 404 Page </Typography>
-          <Link to="/"> <Typography variant="h6" color="secondary"> Back to the Homepage...  </Typography></Link>
+          <Link to={ user ? '/' : '/auth' }> <Typography variant="h6" color="secondary">
+             { user ? 'Back to the Homepage...' : 'You are not Logged in yet.'}  </Typography></Link>
         </Container>
           </Grid>
         </Grid>

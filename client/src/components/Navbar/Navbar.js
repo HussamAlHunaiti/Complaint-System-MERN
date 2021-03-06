@@ -27,6 +27,7 @@ const Navbar = () => {
     setUser(null);
     localStorage.clear();
     history.push('/auth');
+    window.location.reload();
   };
 
   useEffect(() => {

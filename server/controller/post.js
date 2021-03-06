@@ -28,17 +28,9 @@ export const getPost = async (req, res) => {
 };
 
 export const createPost = async (req, res) => {
-  const { title, content, selectedFile, creator,email, address, tags } = req.body;
+  const post = req.body;
 
-  const newPostMessage = new PostMessage({
-    title,
-    content,
-    selectedFile,
-    creator,
-    email,
-    address,
-    tags,
-  });
+  const newPostMessage = new PostMessage({...post, creatorToken: req.userId});
 
   try {
     await newPostMessage.save();
@@ -58,7 +50,7 @@ export const updatePost = async (req, res) => {
 
   const updatedPost = await PostMessage.findByIdAndUpdate(
     id,
-    { state,  priority},
+    { state,  priority, creatorToken: req.userId},
     { new: true }
   );
 

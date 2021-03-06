@@ -14,6 +14,7 @@ import NotFoundPage from "./components/NotFoundPage/NotFoundPage.js";
 const App = () => {
   const [currentId, setCurrentId] = useState(0);
   const dispatch = useDispatch();
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
 
   useEffect(() => {
     dispatch(getPosts());
@@ -23,6 +24,8 @@ const App = () => {
     <Router>
       <Navbar />
       <Switch>
+
+      { user && (<>
         <Route exact path="/">
           <Home />
         </Route>
@@ -35,11 +38,17 @@ const App = () => {
         <Route exact path="/details/:id">
           <PostDetails />
         </Route>
-        <Route exact path="/auth">
-          <Auth />
-        </Route>
+
+        { user.result.isAdmin && (
         <Route exact path="/auth/admin">
           <AdminAuth />
+        </Route>
+        )}
+      </>)
+      }
+
+        <Route exact path="/auth">
+          <Auth />
         </Route>
         <Route path="*">
           <NotFoundPage />

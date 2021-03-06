@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core";
 import { useState } from "react";
 import FileBase from "react-file-base64";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { createPost } from "../../actions/post";
 import { useHistory } from "react-router-dom";
 

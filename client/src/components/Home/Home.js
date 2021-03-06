@@ -6,6 +6,7 @@ import { useState } from "react";
 const Home = () => {
   const classes = useStyles();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+
   return (
     <Grow in>
       <Container>
