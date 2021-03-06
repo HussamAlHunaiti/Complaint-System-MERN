@@ -24,4 +24,4 @@ mongoose.connect(
     app.listen(PORT, () => console.log(`Server running on port : ${PORT}`));
     }).catch((error) => console.log(`${error} did not connect`));
 
-mongoose.set('useFindAndModify', false); // no warning on the console
+mongoose.set('useFindAndModify', false);

@@ -11,10 +11,4 @@ export default makeStyles((theme) => ({
   actionDiv: {
     textAlign: 'center',
   },
-  notFound: {
-    width: '300px',
-    height: '100%',
-    textAlign: 'center',
-    margin: '33.3%',
-  },
 }));

@@ -2,18 +2,16 @@ import useStyles from "./styles";
 import {
   Card,
   CardActions,
-  CardContent,
   CardMedia,
   Button,
   Typography,
 } from "@material-ui/core/";
-import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import DeleteIcon from "@material-ui/icons/Delete";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import { withStyles } from "@material-ui/core/styles";
 import moment from "moment";
 import { useDispatch } from "react-redux";
-import { likePost, deletePost } from "../../../actions/post";
+import { deletePost } from "../../../actions/post";
 import background from "../../../images/background.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -118,7 +116,7 @@ const Post = ({ post, setCurrentId }) => {
         </Typography>
       </div>
       <div className={classes.overlay2}>
-        { (post.email === user.result.email) && <Button
+        { (post.email === user.result.email && post.state === 'Pending') && <Button
           color="secondary"
           size="small"
           onClick={() => dispatch(deletePost(post._id))}
@@ -139,14 +137,7 @@ const Post = ({ post, setCurrentId }) => {
       >
         {post.title}
       </Typography>
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {post.message}
-        </Typography>
-      </CardContent>
       <CardActions className={classes.cardActions}>
-        {/* <Button size="small" color="primary" onClick={() => dispatch(likePost(post._id))}><ThumbUpAltIcon fontSize="small" /> Like {post.likeCount} </Button> */}
-
         { (user.result.isAdmin) &&
           <Button
           aria-controls="customized-menu"

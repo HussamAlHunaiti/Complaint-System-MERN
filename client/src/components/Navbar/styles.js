@@ -9,8 +9,6 @@ export default makeStyles(() => ({
       position: 'relative',
       left: '650px',
       padding: '10px',
-      '&:hover': {
-      },
   },
   link: {
     paddingLeft: '20px',

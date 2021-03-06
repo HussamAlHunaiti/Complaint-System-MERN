@@ -24,9 +24,9 @@ const Navbar = () => {
   const logout = () => {
     dispatch({ type: actionType.LOGOUT });
 
-    history.push('/auth');
-
     setUser(null);
+    localStorage.clear();
+    history.push('/auth');
   };
 
   useEffect(() => {
@@ -62,7 +62,7 @@ const Navbar = () => {
               {"Dashboard"}
             </Link>
             <Link to="/" className={classes.link}>
-              {"Create"}
+              {"Home"}
             </Link>
             <Button variant="contained" className={classes.logout} color="secondary" onClick={logout}>Logout</Button>
             </div>

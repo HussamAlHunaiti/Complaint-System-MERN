@@ -1,21 +1,17 @@
-import {
-  Container,
-  Grow,
-  Grid,
-} from "@material-ui/core";
 import Posts from "./components/Posts/Posts.js";
 import Form from "./components/Form/Form.js";
+import Home from "./components/Home/Home.js";
 import Navbar from "./components/Navbar/Navbar.js";
-import useStyles from "./styles";
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getPosts } from "./actions/post";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import PostDetails from './components/Posts/PostDetails/PostDetails.js';
-import Auth from './components/Auth/Auth.js';
+import PostDetails from "./components/Posts/PostDetails/PostDetails.js";
+import Auth from "./components/Auth/Auth.js";
+import AdminAuth from "./components/Auth/AdminAuth.js";
+import NotFoundPage from "./components/NotFoundPage/NotFoundPage.js";
 
 const App = () => {
-  const classes = useStyles();
   const [currentId, setCurrentId] = useState(0);
   const dispatch = useDispatch();
 
@@ -26,34 +22,29 @@ const App = () => {
   return (
     <Router>
       <Navbar />
-      <Grow in>
-        <Switch>
-          <Container>
-            <Grid container justify="center" alignItems="stretch">
-              <Route exact path="/">
-                <Grid item xs={12} sm={4}>
-                  <Form currentId={currentId} setCurrentId={setCurrentId} />
-                </Grid>
-              </Route>
-              <Route exact path="/auth">
-                <Grid item xs={12} sm={4}>
-                  <Auth />
-                </Grid>
-              </Route>
-              <Route exact path="/dashboard">
-                <Grid item xs={12} sm={7}>
-                  <Posts setCurrentId={setCurrentId} />
-                </Grid>
-              </Route>
-              <Route exact path="/details/:id">
-                <Grid item xs={12} sm={7}>
-                  <PostDetails />
-                </Grid>
-              </Route>
-            </Grid>
-          </Container>
-        </Switch>
-      </Grow>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route exact path="/create">
+          <Form setCurrentId={setCurrentId} />
+        </Route>
+        <Route exact path="/dashboard">
+          <Posts setCurrentId={setCurrentId} />
+        </Route>
+        <Route exact path="/details/:id">
+          <PostDetails />
+        </Route>
+        <Route exact path="/auth">
+          <Auth />
+        </Route>
+        <Route exact path="/auth/admin">
+          <AdminAuth />
+        </Route>
+        <Route path="*">
+          <NotFoundPage />
+        </Route>
+      </Switch>
     </Router>
   );
 };
