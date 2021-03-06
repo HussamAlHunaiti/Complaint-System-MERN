@@ -4,7 +4,6 @@ import {
   Grid,
 } from "@material-ui/core";
 import Posts from "./components/Posts/Posts.js";
-import Post from "./components/Posts/Post/Post.js";
 import Form from "./components/Form/Form.js";
 import Navbar from "./components/Navbar/Navbar.js";
 import useStyles from "./styles";
@@ -13,6 +12,7 @@ import { useDispatch } from "react-redux";
 import { getPosts } from "./actions/post";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PostDetails from './components/Posts/PostDetails/PostDetails.js';
+import Auth from './components/Auth/Auth.js';
 
 const App = () => {
   const classes = useStyles();
@@ -33,6 +33,11 @@ const App = () => {
               <Route exact path="/">
                 <Grid item xs={12} sm={4}>
                   <Form currentId={currentId} setCurrentId={setCurrentId} />
+                </Grid>
+              </Route>
+              <Route exact path="/auth">
+                <Grid item xs={12} sm={4}>
+                  <Auth />
                 </Grid>
               </Route>
               <Route exact path="/dashboard">

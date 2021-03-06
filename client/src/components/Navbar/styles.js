@@ -7,7 +7,7 @@ export default makeStyles(() => ({
   },
   dashboard: {
       position: 'relative',
-      left: '800px',
+      left: '650px',
       padding: '10px',
       '&:hover': {
       },
@@ -20,5 +20,11 @@ export default makeStyles(() => ({
   },
   title: {
     marginLeft: '15px',
+  },
+  logout: {
+    marginLeft: '20px',
+  },
+  avatar: {
+    backgroundColor: '#f40057',
   }
 }));

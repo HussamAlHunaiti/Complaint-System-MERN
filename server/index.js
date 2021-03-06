@@ -3,6 +3,7 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import postRoutes from './routes/post.js';
+import userRouter from "./routes/user.js";
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
 app.use('/posts', postRoutes);
+app.use("/user", userRouter);
 
 const CONNECTION_URL = 'mongodb+srv://hussamalhunaiti1:hussamalhunaiti1234@cluster0.gve32.mongodb.net/complaintSystemDatabase?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 5000;

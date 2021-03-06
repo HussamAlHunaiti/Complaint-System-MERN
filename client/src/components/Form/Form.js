@@ -6,8 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createPost, updatePost } from '../../actions/post';
 
 const Form = ({ currentId, setCurrentId }) => {
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
   const classes = useStyles();
-  const [postData, setPostData] = useState({ creator: '', email: '', title: '', content: '', tags: '', selectedFile: '', address: ''});
+  const [postData, setPostData] = useState({ creator: user?.result.name, email: user?.result.email, title: '', content: '', tags: '', selectedFile: '', address: ''});
   const post = useSelector((state) => (currentId ? state.posts.find((content) => content._id === currentId) : null));
   const dispatch = useDispatch();
   const [isPending, setIsPending] = useState(false);
@@ -39,7 +40,7 @@ const Form = ({ currentId, setCurrentId }) => {
                 disabled
                 fullWidth
                 id="firstName"
-                label="Hussam AlHunaiti"
+                label={postData.creator}
                 value={postData.creator} onChange={(e) => setPostData({ ...postData, creator: e.target.value })}
               />
             </Grid>
@@ -49,7 +50,7 @@ const Form = ({ currentId, setCurrentId }) => {
                 disabled
                 fullWidth
                 id="email"
-                label="Email Address"
+                label={postData.email}
                 name="email"
                 value={postData.email} onChange={(e) => setPostData({ ...postData, email: e.target.value })}
                 autoComplete="email"
