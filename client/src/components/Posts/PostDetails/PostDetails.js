@@ -20,7 +20,7 @@ const PostDetails = () => {
               <Typography variant="h3" color="secondary" className={classes.title}>{post.title}</Typography>
               <Typography variant="h6" color="primary" className={classes.creator}>{post.creator}</Typography>
               <Typography variant="body2" className={classes.createdAt}>
-                {moment(post.createdAt).fromNow()}
+                {moment(post.createAt).fromNow()}
               </Typography>
               <Typography variant="body2" className={classes.content}>
                 {post.content}

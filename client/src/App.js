@@ -47,12 +47,12 @@ const App = () => {
       </>)
       }
 
-        <Route exact path="/auth">
+        <Route path="*">
           <Auth />
         </Route>
-        <Route path="*">
+        {/* <Route path="*">
           <NotFoundPage />
-        </Route>
+        </Route> */}
       </Switch>
     </Router>
   );
